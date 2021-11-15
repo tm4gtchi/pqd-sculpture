@@ -1,16 +1,17 @@
+import Footer from './Footer';
 import Navbar from './Navbar';
-import ProjectList from './ProjectList';
+// import ProjectList from './ProjectList';
 
-export default function PageLayout({projects, children, className}) {
+export default function PageLayout({children}) {
   return (
-    <div>
-        <Navbar />
-      <div className="flex">
-        <ProjectList className="bg-gray-100 w-40 sm:w-64" projects={projects} />
-        <div className="flex-1 flex bg-gray-100 overflow-hidden">
+    <>
+      <Navbar />
+      <div className="grid grid-cols-7 gap-4">
+        {/* <div className="flex-1 flex bg-gray-100 overflow-hidden"> */}
           {children}
-        </div>
+        {/* </div> */}
       </div>
-    </div>
+      <Footer />
+    </>
   )
 }
