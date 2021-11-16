@@ -6,7 +6,7 @@ const Navbar = () => {
       <p className="font-semibold">Pablo Quiroga Devia</p>   
 
       <ul className="menu md:border-none flex justify-end">
-
+        
         <li className="md:border-none">
           <a href="/cv" className="block md:inline-block px-4 py-3 no-underline">cv</a>
         </li>
