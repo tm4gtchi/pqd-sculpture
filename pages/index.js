@@ -6,13 +6,12 @@ import { useState, useEffect } from 'react'
 
 import {getAllProjects} from 'lib/api';
 
-
 export default function Home({ projects }) {
 
   return (
     <PageLayout project_data={projects}>
         <section className="col-span-2">
-          <div className="flex flex-col place-content-center">
+          <div className="flex flex-col mt-11 h-screen fixed">
             <div>
               <ul className=" px-4">
                 {projects.map((p, index) => 
@@ -26,7 +25,7 @@ export default function Home({ projects }) {
             </div>
           </div>
         </section>
-        <section className="flex-1 overflow-y-scroll col-span-3">
+        <section className="flex-1 col-span-4">
           {projects.map((p, index) => (
               <img className="w-full mb-6" src={p.mainImg} alt="image"/>
           ))}

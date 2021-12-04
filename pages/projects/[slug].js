@@ -1,38 +1,40 @@
+import { useEffect, useState } from 'react';
 import PageLayout from '../../components/PageLayout'
+import Gallery from 'components/Gallery';
 
-import {getProjectBySlug, getAllProjects} from 'lib/api';
+import { getProjectBySlug, getAllProjects } from 'lib/api';
 
-const ProjectPage = ({projects}) => {
+// const SLIDE_COUNT = 10;
+// const slides = Array.from(Array(SLIDE_COUNT).keys());
+
+const ProjectPage = ({ projects }) => {
 
   return(
       <PageLayout projects={projects}>
-        
-        <section className="flex-1 flex overflow-hidden justify-items-center col-span-2">
-          <div className="flex-1 overflow-y-scroll place-content-evenly m-4" key={projects.slug}>
-            <div className="mt-11">
-              <span>{projects.title}</span>
-              <p>{projects.subtitle}</p>
-            <p className="w-100">{projects.description}</p>
-            </div>
-            
-            <div className="mt-11">
-              <span>{projects.title}</span>
-              <p>{projects.subtitle}</p>
-              <p className="w-100">{projects.description}</p>
+        <section className="col-span-2 sticky">
+          <div className="flex flex-col mt-11 h-screen" key={projects.slug}>
+            <div className="w-1/3 m-4 fixed">
+              <div className="mt-11 mr-16">
+                <span>{projects.title}</span>
+                <p>{projects.subtitle}</p>
+                <p className="text-xs">{projects.description}</p>
+              </div>
+              
+              <div className="bottom-1 mt-11 mr-16">
+                <span>{projects.title}</span>
+                <p>{projects.subtitle}</p>
+                <p className="text-xs">{projects.description}</p>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="col-span-4 mb-1">
-          <img className="w-full mb-6" src={projects.mainImg} alt="image"/>
-              {/* <div className="flex-row"> */}
-          <div className="flex flex-row h-60 overflow-hidden">
-          {projects.gallery.map((g, index) => (
-            <img className="gallery_images mr-4 "src={g.url} alt="image"/>
-          ))}
-          </div>
+        <section className="col-span-4">
+          {/* <div className="w-100"> */}
+            <Gallery projects={projects} />
+          {/* </div> */}
         </section>
-        </PageLayout>
+      </PageLayout>
   )
 }
 

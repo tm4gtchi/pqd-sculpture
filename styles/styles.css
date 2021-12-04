@@ -1,16 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.large_img {
-  height: 50vh;
-}
-
 .embla {
-  /* position: relative; */
-  background-color: #ffffff;
+  position: relative;
+  background-color: #f7f7f7;
   padding: 20px;
-  max-width: 100vw;
+  max-width: 670px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -41,14 +33,13 @@
 .embla__slide {
   padding-left: 10px;
   min-width: 100%;
-  flex: 0 0 33%;
   position: relative;
 }
 
 .embla__slide__inner {
   position: relative;
   overflow: hidden;
-  height: 30vh;
+  height: 190px;
 }
 
 .embla__slide__img {
@@ -75,7 +66,7 @@
 
 .embla__slide--thumb {
   padding-left: 8px;
-  min-width: 30%;
+  min-width: 20%;
 }
 
 .embla__slide__inner--thumb {
