@@ -1,27 +1,37 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
 
-  const thumbItems = (thumbnailImg, [setThumbIndex, setThumbAnimation]) => {
-    return thumbnailImg.map((artwork, index) => (
-        <div className="thumb" onClick={() => (setThumbIndex(index), setThumbAnimation(true))}>
-          {artwork.url}
+const items = [
+    <div className="item" data-value="1">1</div>,
+    <div className="item" data-value="2">2</div>,
+    <div className="item" data-value="3">3</div>,
+    <div className="item" data-value="4">4</div>,
+    <div className="item" data-value="5">5</div>,
+];
+
+const thumbItems = (items, [setThumbIndex, setThumbAnimation]) => {
+    return items.map((item, i) => (
+        <div className="thumb" onClick={() => (setThumbIndex(i), setThumbAnimation(true))}>
+            {item}
         </div>
     ));
-  };
+};
 
-const Gallery = ({ thumbnailImg }) => {
-  const [mainIndex, setMainIndex] = useState(0);
-  const [mainAnimation, setMainAnimation] = useState(false);
-  const [thumbIndex, setThumbIndex] = useState(0);
-  const [thumbAnimation, setThumbAnimation] = useState(false);
-  const [thumbs] = useState(thumbItems(thumbnailImg, [setThumbIndex, setThumbAnimation]));
+const Carousel = () => {
+    const [mainIndex, setMainIndex] = useState(0);
+    const [mainAnimation, setMainAnimation] = useState(false);
+    const [thumbIndex, setThumbIndex] = useState(0);
+    const [thumbAnimation, setThumbAnimation] = useState(false);
+    const [thumbs] = useState(thumbItems(items, [setThumbIndex, setThumbAnimation]));
 
-  const slideNext = () => {
+    const slideNext = () => {
         if (!thumbAnimation && thumbIndex < thumbs.length - 1) {
             setThumbAnimation(true);
             setThumbIndex(thumbIndex + 1);
         }
     };
+
     const slidePrev = () => {
         if (!thumbAnimation && thumbIndex > 0) {
             setThumbAnimation(true);
@@ -55,36 +65,33 @@ const Gallery = ({ thumbnailImg }) => {
 
     return [
        <AliceCarousel
-        className="alice-carousel__stage"
             activeIndex={mainIndex}
             animationType="fadeout"
             animationDuration={800}
             disableDotsControls
             disableButtonsControls
             infinite
-            items={thumbnailImg}
+            items={items}
             mouseTracking={!thumbAnimation}
             onSlideChange={syncMainBeforeChange}
             onSlideChanged={syncMainAfterChange}
             touchTracking={!thumbAnimation}
        />,
-       <div className="thumbs flex flex-row place-content-start">
-          <div className="alice-carousel__prev-btn-item" 
-            onClick={slidePrev}>&lang; CLICK PREV</div>
+       <div className="thumbs">
            <AliceCarousel
                 activeIndex={thumbIndex}
                 autoWidth
                 disableDotsControls
                 disableButtonsControls
-                items={thumbnailImg}
+                items={thumbs}
                 mouseTracking={false}
                 onSlideChanged={syncThumbs}
                 touchTracking={!mainAnimation}
            />
-           <div className="alice-carousel__next-btn-item" 
-            onClick={slideNext}>&rang; CLICK NEXT </div>
+           <div className="btn-prev" onClick={slidePrev}>&lang;</div>
+           <div className="btn-next" onClick={slideNext}>&rang;</div>
        </div>
     ]
-}
-export default Gallery;
+};
 
+export default Carousel;
