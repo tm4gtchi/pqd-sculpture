@@ -15,17 +15,11 @@ const Gallery = ({urls, series}) => {
 //   }, [])
 
     return (
-
-        <div className="container overflow-y-scroll top-0">
-        <div>
-            <div className="flex flex-row  ">
+            <div className="flex flex-row space-x-4">
                 {urls.map((u, i) => {
-                    return <img className="mr-11 h-80" src={u} alt={i}/>
+                    return <img className="max-h-60 " src={u} alt={i}/>
                 })}
             </div>
-                <img className="fixed mt-12 w-1/2" src={series.mainImg} alt="project_page" />
-        </div>
-        </div>
     )
 }
 

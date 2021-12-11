@@ -3,6 +3,7 @@ import PageLayout from '../../components/PageLayout'
 import Gallery from 'components/Gallery';
 
 import { getProjectBySlug, getAllProjects } from 'lib/api';
+import Navbar from 'components/Navbar';
 
 const ProjectPage = ({ projects }) => {
 
@@ -24,22 +25,20 @@ const ProjectPage = ({ projects }) => {
   return(
       <PageLayout projects={projects}>
         {/* LEFT SIDE */}
-        <section className="col-span-2 sticky">
-          <div className="flex flex-col mt-11 h-screen" key={projects.slug}> 
-            <div className="w-1/3 m-4 fixed">
-              <div className="bg-white absolute mt-11 mr-16">
-                <span>{projects.title}</span>
-                <p>{projects.subtitle}</p>
-                <p className="text-xs">{projects.description}</p>
-              </div>
-              <div className="bottom-1 mt-11 mr-16"> 
-              </div>
+        <div className="container grid grid-rows-3 gap-4 w-screen h-screen m-4 fixed">
+        <section className="row-span-2 flex flex-row mt-12">
+            <div className="bg-white mr-16">
+              <span>{projects.title}</span>
+              <p>{projects.subtitle}</p>
+              <p className="text-xs">{projects.description}</p>
             </div>
-          </div>
+          <img className="main_image max-w-8/12 h-auto" src={projects.mainImg} alt="mainimg" />
         </section>
-        <section className="col-span-3">
-            <Gallery series={projects} urls={galleryURLs}/>
+        <section className="row-span-1 flex flex-no-wrap overflow-x-scroll 
+          scrolling-touch h-auto place-self-end">
+          <Gallery series={projects} urls={galleryURLs}/>
         </section>
+        </div>
       </PageLayout>
   )
 }

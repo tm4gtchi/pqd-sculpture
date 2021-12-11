@@ -10,10 +10,11 @@ export default function Home({ projects }) {
 
   return (
     <PageLayout project_data={projects}>
-        <section className="col-span-2">
+        <section className="col-span-1"> 
+        {/* col-span-2 */}
           <div className="flex flex-col mt-11 h-screen fixed">
             <div>
-              <ul className=" px-4">
+              <ul className="px-4">
                 {projects.map((p, index) => 
                 <li className="mt-8"key={p.title}>
                   <Link href={`/projects/${encodeURIComponent(p.slug)}`}>
@@ -25,7 +26,7 @@ export default function Home({ projects }) {
             </div>
           </div>
         </section>
-        <section className="flex-1 col-span-4">
+        <section className="flex-1 col-span-2">
           {projects.map((p, index) => (
               <img className="w-full mb-6" src={p.mainImg} alt="image"/>
           ))}
