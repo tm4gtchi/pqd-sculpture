@@ -17,7 +17,7 @@ const Gallery = ({urls, series}) => {
     return (
             <div className="flex flex-row space-x-4">
                 {urls.map((u, i) => {
-                    return <img className="max-h-60 " src={u} alt={i}/>
+                    return <img className="max-h-60" src={u} alt={i}/>
                 })}
             </div>
     )
