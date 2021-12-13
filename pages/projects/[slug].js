@@ -25,17 +25,25 @@ const ProjectPage = ({ projects }) => {
   return(
       <PageLayout projects={projects}>
         {/* LEFT SIDE */}
-        <div className="container grid grid-rows-3 gap-4 w-screen h-screen m-4 ">
-        <section className="row-span-2 flex flex-col md:flex-row place-contents-evenly mt-12">
-            <div className="bg-white mr-16">
-              <span>{projects.title}</span>
-              <p>{projects.subtitle}</p>
-              <p className="text-xs">{projects.description}</p>
+        <div className="object-center container grid grid-rows-2 gap-4 w-screen h-screen m-4 place-content-center">
+        <section className="row-span-1 w-full flex flex-col mt-12 place-content-evenly md:flex-row">
+            <div className="text-container bg-white w-3/6">
+              <div className="text-div w-9/12 ">
+                <span>{projects.title}</span>
+                <p>{projects.subtitle}</p>
+                <p className="text-xs">{projects.description}</p>
+              </div>
             </div>
-          <img className="main_image w-8/12 object-contain object-top" src={projects.mainImg} alt="mainimg" />
+          <img className="main_image object-contain" src={projects.mainImg} alt="mainimg" />
         </section>
-        <section className="row-span-1 flex flex-no-wrap overflow-x-scroll 
-          scrolling-touch h-auto place-self-end">
+        <section className="row-span-1 w-full flex flex-col place-content-evenly md:flex-row">
+            <div className="bg-white w-3/6">
+              <div className="text-div w-9/12">
+                <span>detail text</span>
+                <p>lorem ipsem</p>
+                <p className="text-xs">{projects.description}</p>
+              </div>
+            </div>
           <Gallery series={projects} urls={galleryURLs}/>
         </section>
         </div>
@@ -62,3 +70,4 @@ export async function getStaticPaths() {
 }
 
 export default ProjectPage;
+
