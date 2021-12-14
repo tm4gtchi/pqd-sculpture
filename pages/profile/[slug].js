@@ -1,40 +1,19 @@
-import { useEffect, useState } from 'react';
 import PageLayout from '../../components/PageLayout'
-import Gallery from 'components/Gallery';
+import { getAuthorInfo, geAuthorInfoSlug } from 'lib/api';
 
-import { getProjectBySlug, getAllProjects } from 'lib/api';
-import Navbar from 'components/Navbar';
-
-const ProjectPage = ({ projects }) => {
-
-  // ARTWORK DATA
-  const [galleryURLs, setGalleryURLs] = useState([]);
-  const [artworkText, setArtworkText] = useState([]);
-
-  useEffect(() => {
-    async function handleGallery(){
-      let urls = [];
-      projects.gallery.forEach((item) => {
-        urls.push(item.url)
-        return urls
-      }) 
-        setGalleryURLs(urls)
-    } handleGallery();
-  }, [])
+const Content = ({ myInfo }) => {
 
   return(
-      <PageLayout projects={projects}>
+      <PageLayout info={myInfo}>
         {/* LEFT SIDE */}
         <div className="object-center container grid grid-rows-2 gap-4 w-screen h-screen m-4 place-content-center">
         <section className="row-span-1 w-full flex flex-col mt-12 place-content-evenly md:flex-row">
             <div className="text-container bg-white w-3/6">
               <div className="text-div w-9/12 ">
-                <span>{projects.title}</span>
-                <p>{projects.subtitle}</p>
+                <span>{myInfo.title}</span>
                 <p className="text-xs">{projects.description}</p>
               </div>
             </div>
-          <img className="main_image object-contain" src={projects.mainImg} alt="mainimg" />
         </section>
         <section className="row-span-1 w-full flex flex-col place-content-evenly md:flex-row">
             <div className="text-container bg-white w-3/6">
@@ -44,7 +23,6 @@ const ProjectPage = ({ projects }) => {
                 <p className="text-xs">{projects.description}</p>
               </div>
             </div>
-          <Gallery series={projects} urls={galleryURLs}/>
         </section>
         </div>
       </PageLayout>
@@ -52,22 +30,21 @@ const ProjectPage = ({ projects }) => {
 }
 
 export async function getStaticProps({params, preview = false, previewData}) {
-  const projects = await getProjectBySlug(params.slug, preview);
+  const myInfo = await geAuthorInfoSlug(params.slug, preview);
   return {
-    props: { projects, preview },
+    props: { myInfo, preview },
     revalidate: 1
   }
 }
-
 // TODO: Introduce fallback
 export async function getStaticPaths() {
-  const projects = await getAllProjects();
-  const paths = projects?.map(project => ({params: {slug: project.slug}}));
+  const myInfo = await getAuthorInfo();
+  const paths = myInfo?.map(info => ({params: {slug: info.slug}}));
   return {
     paths,
     fallback: true
   }
 }
 
-export default ProjectPage;
+export default Content;
 

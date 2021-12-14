@@ -13,9 +13,8 @@ export default function Home({ projects }) {
         <section className="col-span-1"> 
         {/* col-span-2 */}
           <div className="flex flex-col mt-11 h-screen fixed">
-            <div>
               <ul className="px-4">
-                {projects.map((p, index) => 
+                {projects.map(p => 
                 <li className="mt-8"key={p.title}>
                   <Link href='/projects/[slug]' as={`/projects/${encodeURIComponent(p.slug)}`}>
                     <a>{p.title}</a>
@@ -23,11 +22,10 @@ export default function Home({ projects }) {
                 </li>
                 )}
               </ul>
-            </div>
           </div>
         </section>
         <section className="flex-1 col-span-2">
-          {projects.map((p, index) => (
+          {projects.map(p => (
               <img className="w-full mb-6" src={p.mainImg} alt="image"/>
           ))}
         </section>
@@ -42,27 +40,7 @@ export async function getStaticProps() {
   const projects = await getAllProjects();
   return {
     props: {
-      projects
+      projects,
     }
   }
 }
-
-{/* <div className="grid grid-cols-7 gap-4">
-        <section className="col-span-2">
-          1
-          <ul className="top-14 px-4">
-            {projects.map((p, index) => 
-            <li className="mt-8"key={p.title}>
-              <Link href={`/projects/${encodeURIComponent(p.slug)}`}>
-                <a>{p.title}</a>
-              </Link>
-            </li>
-            )}
-          </ul>
-        </section>
-        <section className="col-span-4">
-          {projects.map((p, index) => (
-              <img className="w-full mb-6" src={p.mainImg} alt="image"/>
-          ))}
-        </section>
-        </div> */}
