@@ -1,21 +1,29 @@
 import Link from 'next/link'
 
-const Navbar = ({author}) => {
+const Navbar = () => {
   return (
     <nav className="nav fixed top-0 flex flex-wrap items-center w-full justify-between px-4">
-      <p className="font-semibold">Pablo Quiroga Devia</p>   
+      <Link href="/">
+        <a className="font-semibold">Pablo Quiroga Devia</a>   
+      </Link>
 
-      <ul className="menu md:border-none flex justify-end">
+      <ul className="menu md:border-none flex flex-col justify-end">
         
         <li className="md:border-none">
-          <Link href="/cv" className="block md:inline-block px-4 py-3 no-underline">cv</Link>
+          <Link 
+            href="/pqd/cv" 
+            className="block md:inline-block px-4 py-3 no-underline">
+              <a>cv</a>
+            </Link>
         </li>
         
         <li className="md:border-none">
           <Link 
-          href="/pqd-sculpture/pages/profile/[slug].js" 
+          href="/pqd/bio" 
           // as={`/${encodeURIComponent(author.slug)}`}
-          className="block md:inline-block px-4 py-3 no-underline">contact</Link>
+          className="block md:inline-block px-4 py-3 no-underline">
+            <a>contact</a>
+            </Link>
         </li>
         
         </ul>

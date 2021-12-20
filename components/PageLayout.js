@@ -1,12 +1,10 @@
 import Footer from './Footer';
 import Navbar from './Navbar';
 
-import {getAuthorInfo} from '../lib/api';
-
-export default function PageLayout({children, author}) {
+export default function PageLayout({children}) {
   return (
     <div className ="container">
-      <Navbar data={author}/>
+      <Navbar />
         <div className="h-screen flex grid grid-cols-4 gap-4">
           {children}
       </div>
