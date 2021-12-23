@@ -1,4 +1,3 @@
-import Footer from './Footer';
 import Navbar from './Navbar';
 
 export default function PageLayout({children}) {
@@ -8,7 +7,6 @@ export default function PageLayout({children}) {
         <div className="h-screen flex grid grid-cols-4 gap-4">
           {children}
       </div>
-      <Footer />
     </div>
   )
 }
