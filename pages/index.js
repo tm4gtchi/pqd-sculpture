@@ -5,7 +5,7 @@ import Footer from 'components/Footer';
 import imageUrlBuilder from '@sanity/image-url';
 import { useState, useEffect } from 'react'
 
-import {getAllProjects} from 'lib/api';
+import { getAllProjects } from 'lib/api';
 
 export default function Home({ projects }) {
 
@@ -39,9 +39,6 @@ export default function Home({ projects }) {
   )
 }
 
-//called during build time (build time)
-//provides props to your page
-//creates static page
 export async function getStaticProps() {
   const projects = await getAllProjects();
   return {

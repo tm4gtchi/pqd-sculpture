@@ -59,7 +59,6 @@ export async function getStaticProps({params, preview = false, previewData}) {
   }
 }
 
-// TODO: Introduce fallback
 export async function getStaticPaths() {
   const projects = await getAllProjects();
   const paths = projects?.map(project => ({params: {slug: project.slug}}));
