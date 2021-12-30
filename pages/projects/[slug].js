@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
 import PageLayout from '../../components/PageLayout'
 import Gallery from 'components/Gallery';
-
 import { getProjectBySlug, getAllProjects } from 'lib/api';
-import Navbar from 'components/Navbar';
 
 const ProjectPage = ({ projects }) => {
 
-  // ARTWORK DATA
   const [galleryURLs, setGalleryURLs] = useState([]);
-  const [artworkText, setArtworkText] = useState([]);
 
   useEffect(() => {
     async function handleGallery(){

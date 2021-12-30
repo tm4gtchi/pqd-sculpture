@@ -5,11 +5,11 @@ const Resume = ({biography}) => {
 
   return(
       <PageLayout>
-        {/* LEFT SIDE */}
         <div className="object-center container grid grid-rows-2 gap-4 w-screen h-screen m-4 place-content-center">
-        <section className="row-span-1 w-full flex flex-col mt-12 place-content-evenly md:flex-row">
+        <section className="row-span-1 w-full flex flex-col mt-12 md:flex-row">
             <div className="text-container bg-white">
               <div className="text-div mt-4">
+                  About
                 <span className="text-xs">
                 {biography[0].biography_text}  
                 </span>

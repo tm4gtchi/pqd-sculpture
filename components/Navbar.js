@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Footer from './Footer'
 
 const Navbar = () => {
   return (

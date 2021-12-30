@@ -1,7 +1,6 @@
 import styles from 'styles/Home.module.css';
 import PageLayout from 'components/PageLayout';
 import Link from 'next/dist/client/link';
-import Footer from 'components/Footer';
 import imageUrlBuilder from '@sanity/image-url';
 import { useState, useEffect } from 'react'
 
@@ -34,7 +33,6 @@ export default function Home({ projects }) {
               <img className="w-full mb-6" src={p.mainImg} alt="image"/>
           ))}
         </section>
-        <Footer />
     </PageLayout>
   )
 }

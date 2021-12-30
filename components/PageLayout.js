@@ -1,4 +1,5 @@
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 export default function PageLayout({children}) {
   return (
@@ -6,16 +7,8 @@ export default function PageLayout({children}) {
       <Navbar />
         <div className="h-screen flex grid grid-cols-4 gap-4">
           {children}
-      </div>
+      <Footer />
+        </div>
     </div>
   )
-}
-
-export async function getStaticProps() {
-  const author = await getAuthorInfo();
-  return {
-    props: {
-      author,
-    }
-  }
 }
